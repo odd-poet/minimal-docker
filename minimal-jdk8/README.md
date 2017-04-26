@@ -4,5 +4,5 @@
 
 It contains only oracle jdk8.
 
-- version: `jdk8-u121`
+- version: `jdk8-u131`
 - size: about 180M
