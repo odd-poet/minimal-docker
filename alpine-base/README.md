@@ -5,6 +5,7 @@
 This image is for base of other images.
 
 - based : [alpine linux](https://hub.docker.com/r/_/alpine/)
+  - version: `3.6`
 - curl
 - tar
 - zip/unzip

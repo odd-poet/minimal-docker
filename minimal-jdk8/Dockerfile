@@ -1,7 +1,7 @@
 #==============================================================================
 # minimal JDK8
 #==============================================================================
-FROM oddpoet/alpine-base:latest
+FROM oddpoet/alpine-base:3.6
 MAINTAINER yunsang.choi<oddpoet@gmail.com>
 
 # Java Version
