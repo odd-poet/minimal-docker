@@ -6,8 +6,8 @@ MAINTAINER yunsang.choi<oddpoet@gmail.com>
 
 # Java Version
 ENV JAVA_MAJOR_VERSION      8
-ENV JAVA_UPDATE_VERSION    131
-ENV JAVA_BUILD_VERSION     11
+ENV JAVA_UPDATE_VERSION    152
+ENV JAVA_BUILD_VERSION     16
 ENV JDK_VERSION             ${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}
 ENV JAVA_VERSION            1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}
 ENV JAVA_PACKAGE            jdk
@@ -19,7 +19,7 @@ ENV JAVA_PACKAGE            jdk
 #--------------------------------------------------------------------------------
 # Download and unarchive Java
 RUN mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-  http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}/d54c1d3a095b4ff2b6607d096fa80163/${JAVA_PACKAGE}-${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-linux-x64.tar.gz \
+  http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}/aa0333dd3019491ca4f6ddbe78cdb6d0/${JAVA_PACKAGE}-${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-linux-x64.tar.gz \
     | tar -xzf - -C /opt &&\
     ln -s /opt/jdk1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION} /opt/jdk && \
     rm -rf /opt/jdk/*src.zip \
