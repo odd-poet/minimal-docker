@@ -15,11 +15,7 @@ ENV JAVA_PACKAGE            jdk
 
 # prepare basic utils
 RUN apt-get update;
-RUN apt-get install -y curl zip unzip tar locales
-## locale 설정 : 한글
-RUN rm -rf /var/lib/apt/lists/* \
-    && localedef -i ko_KR -c -f UTF-8 -A /usr/share/locale/locale.alias ko_KR.UTF-8
-ENV LANG ko_KR.utf8
+RUN apt-get install -y curl zip unzip tar
 
 #--------------------------------------------------------------------------------
 # NOTICE:
