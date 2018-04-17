@@ -4,5 +4,7 @@
 
 It contains only oracle jdk8.
 
-- version: `jdk8-u152`
-- size: about 180M
+- version: `jdk8-u162`
+- size: about 342MB
+- linux: `ubuntu:16.04`
+- locale: `ko_KR.utf8`
