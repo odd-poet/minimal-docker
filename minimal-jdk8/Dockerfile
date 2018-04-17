@@ -1,16 +1,25 @@
 #==============================================================================
 # minimal JDK8
 #==============================================================================
-FROM oddpoet/alpine-base:3.6
+# ubuntu 베이스로 변경한다. (LTS 버전)
+FROM ubuntu:16.04
 MAINTAINER yunsang.choi<oddpoet@gmail.com>
 
 # Java Version
 ENV JAVA_MAJOR_VERSION      8
-ENV JAVA_UPDATE_VERSION    152
-ENV JAVA_BUILD_VERSION     16
+ENV JAVA_UPDATE_VERSION    162
+ENV JAVA_BUILD_VERSION     12
 ENV JDK_VERSION             ${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}
 ENV JAVA_VERSION            1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}
 ENV JAVA_PACKAGE            jdk
+
+# prepare basic utils
+RUN apt-get update;
+RUN apt-get install -y curl zip unzip tar locales
+## locale 설정 : 한글
+RUN rm -rf /var/lib/apt/lists/* \
+    && localedef -i ko_KR -c -f UTF-8 -A /usr/share/locale/locale.alias ko_KR.UTF-8
+ENV LANG ko_KR.utf8
 
 #--------------------------------------------------------------------------------
 # NOTICE:
@@ -18,8 +27,8 @@ ENV JAVA_PACKAGE            jdk
 #  If jdk was installed by sdkman, docker image size will be larger then 700MB.
 #--------------------------------------------------------------------------------
 # Download and unarchive Java
-RUN mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
-  http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}/aa0333dd3019491ca4f6ddbe78cdb6d0/${JAVA_PACKAGE}-${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-linux-x64.tar.gz \
+RUN mkdir -p /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" \
+  http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_VERSION}/0da788060d494f5095bf8624735fa2f1/${JAVA_PACKAGE}-${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-linux-x64.tar.gz \
     | tar -xzf - -C /opt &&\
     ln -s /opt/jdk1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION} /opt/jdk && \
     rm -rf /opt/jdk/*src.zip \
