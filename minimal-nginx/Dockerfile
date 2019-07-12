@@ -1,13 +1,13 @@
 #==============================================================================
 # minimal nginx
 #==============================================================================
-FROM oddpoet/alpine-base:3.6
-MAINTAINER yunsang.choi<oddpoet@gmail.com>
+FROM ubuntu:18.04
+LABEL maintainer="yunsang.choi<oddpoet@gmail.com>"
 
 
-# install nginx
-ENV NGINX_VERSION   "1.12.0-r2"
-RUN apk --update add "nginx=${NGINX_VERSION}"
+ENV NGINX_VERSION   1.14.0-0ubuntu1.2
+RUN apt-get update
+RUN apt-get install -y curl zip unzip vim && apt-get clean
+RUN apt-get install -y nginx=${NGINX_VERSION} && apt-get clean
 
-# mkdir for nginx.pid
-RUN mkdir -p /run/nginx
+
