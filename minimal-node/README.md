@@ -2,4 +2,5 @@
 
 [oddpoet/minimal-node](https://hub.docker.com/r/oddpoet/minimal-node/)
 
-- version: `7.10.1-r1`
+- ubuntu `18.04(LTS)` base로 변경
+- version: `8.10.0` (npm: `3.5.2`)
